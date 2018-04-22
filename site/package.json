@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "devDependencies": {
+    "vuepress": "^0.7.1"
+  },
+  "dependencies": {
+    "element-ui": "^1.4.13"
+  }
+}
