@@ -17,6 +17,21 @@ const apiRouter = new Router({ prefix: '/api' })
 
 appRouter.use('/output', serve(outputDir))
 
+apiRouter.use(async (ctx, next) => {
+  try {
+    await next()
+  } catch (err) {
+    const errObj = err.expose ? {
+      status: err.status,
+      error: err.message
+    } : {
+      status: 500,
+      error: 'Internal server error.'
+    }
+    ctx.body = errObj
+  }
+})
+
 apiRouter.use(KoaJSON())
 
 apiRouter.post('/make', async ctx => {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="$withBase(`/story/${story}.gif`)">
+    <slot></slot>
     <el-input placeholder="Please input" v-model="input"></el-input>
     <el-button type="primary">生成</el-button>
   </div>
@@ -9,7 +9,8 @@
 <script>
 export default {
   props: {
-    story: String
+    story: String,
+    pic: String
   }
 }
 </script>

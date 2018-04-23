@@ -1,3 +1,5 @@
 # 王境泽
 
-<story-make story="wangjingze"></story-make>
+<story-make>
+  <img src="~@story/wangjingze.gif">
+</story-make>

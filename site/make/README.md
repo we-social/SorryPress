@@ -4,7 +4,7 @@
 请点击选择一个模板
 :::
 
-[![](~@public/story/wangjingze.gif)](./wangjingze.md)[![](~@public/story/tuboshu.gif)](./tuboshu.md)
+[![](~@story/wangjingze.gif)](./wangjingze.md)[![](~@story/tuboshu.gif)](./tuboshu.md)
 
 <style scoped>
 img {

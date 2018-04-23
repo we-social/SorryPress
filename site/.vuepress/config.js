@@ -6,7 +6,7 @@ module.exports = {
     '/': {
       lang: 'zh-CN',
       title: 'SorryPress',
-      description: 'Sorry动图 Vuepress版'
+      description: 'Sorry动图 VuePress版'
     }
   },
   head: [
@@ -24,12 +24,13 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
+        '@story': join(__dirname, '../../server/story'),
         '@public': join(__dirname, 'public')
       }
     }
   },
   themeConfig: {
-    repo: 'fritx/sorrypress',
+    repo: 'fritx/SorryPress',
     // editLinks: true,
     docsDir: 'site',
     locales: {
@@ -58,8 +59,4 @@ module.exports = {
       }
     }
   }
-}
-
-function genSidebarConfig (title) {
-  return 
 }

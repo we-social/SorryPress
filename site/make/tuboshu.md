@@ -1,3 +1,5 @@
 # 土拨鼠
 
-<story-make story="tuboshu"></story-make>
+<story-make>
+  <img src="~@story/tuboshu.gif">
+</story-make>
