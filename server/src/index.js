@@ -8,7 +8,7 @@ const serve = require('koa-static')
 const Router = require('koa-router')
 const httpError = require('http-errors')
 const execa = require('execa')
-const { md5, KoaJSON } = require('./utils')
+const { md5, KoaAPI, KoaJSON } = require('./utils')
 const { storyDir, outputDir, storyList } = require('../config')
 
 const app = new Koa()
@@ -17,21 +17,7 @@ const apiRouter = new Router({ prefix: '/api' })
 
 appRouter.use('/output', serve(outputDir))
 
-apiRouter.use(async (ctx, next) => {
-  try {
-    await next()
-  } catch (err) {
-    const errObj = err.expose ? {
-      status: err.status,
-      error: err.message
-    } : {
-      status: 500,
-      error: 'Internal server error.'
-    }
-    ctx.body = errObj
-  }
-})
-
+apiRouter.use(KoaAPI())
 apiRouter.use(KoaJSON())
 
 apiRouter.post('/make', async ctx => {

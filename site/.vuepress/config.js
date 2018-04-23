@@ -25,6 +25,7 @@ module.exports = {
     resolve: {
       alias: {
         '@story': join(__dirname, '../../server/story'),
+        '@utils': join(__dirname, 'utils'),
         '@public': join(__dirname, 'public')
       }
     }
@@ -40,14 +41,14 @@ module.exports = {
         editLinkText: '在 GitHub 上编辑此页',
         nav: [
           {
-            text: '制作',
+            text: '制作动图',
             link: '/make/'
           }
         ],
         sidebar: {
           '/make/': [
             {
-              title: '制作',
+              title: '制作动图',
               collapsable: false,
               children: [
                 'wangjingze',

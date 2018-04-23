@@ -6,7 +6,25 @@ const _ = require('lodash')
 const koaBody = KoaBody()
 
 exports.md5 = md5
+exports.KoaAPI = KoaAPI
 exports.KoaJSON = KoaJSON
+
+function KoaAPI () {
+  return async (ctx, next) => {
+    try {
+      await next()
+    } catch (err) {
+      const errObj = err.expose ? {
+        status: err.status,
+        error: err.message
+      } : {
+        status: 500,
+        error: 'Internal server error.'
+      }
+      ctx.body = errObj
+    }
+  }
+}
 
 function KoaJSON () {
   return async (ctx, next) => {
