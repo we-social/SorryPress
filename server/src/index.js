@@ -9,12 +9,14 @@ const Router = require('koa-router')
 const httpError = require('http-errors')
 const execa = require('execa')
 const { md5, KoaAPI, KoaJSON } = require('./utils')
-const { storyDir, outputDir, storyList } = require('../config')
+const { siteDir, storyDir, outputDir, storyList } = require('../config')
 
 const app = new Koa()
 const appRouter = new Router()
 const apiRouter = new Router({ prefix: '/api' })
 
+// appRouter.use('/', serve(siteDir)) // not works
+app.use(serve(siteDir))
 appRouter.use('/output', serve(outputDir))
 
 apiRouter.use(KoaAPI())

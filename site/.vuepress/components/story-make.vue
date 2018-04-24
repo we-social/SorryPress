@@ -1,7 +1,9 @@
 <template>
   <div>
-    <slot></slot>
-    <el-form class="form" ref="form" :model="form">
+    <div ref="imgBox">
+      <slot></slot>
+    </div>
+    <el-form class="form" :model="form">
       <el-form-item v-for="(item, i) in form.inputs">
         <el-input :placeholder="meta.sentences[i]" v-model="form.inputs[i]"></el-input>
       </el-form-item>
@@ -31,7 +33,24 @@ export default {
   },
   methods: {
     make () {
-      // todo
+      // todo 表单验证
+      req({
+        method: 'POST',
+        url: '/api/make',
+        params: {
+          story: this.name,
+          textList: this.form.inputs
+        }
+      })
+      .then(res => {
+        const src = this.$withBase(`/output/${res.outputFileName}`)
+        this.$refs.imgBox.querySelector('img')
+          .setAttribute('src', src)
+        this.$message.success('已生成')
+      })
+      .catch(err => {
+        this.$message.error(err.message)
+      })
     }
   }
 }
