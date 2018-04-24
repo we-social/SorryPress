@@ -1,12 +1,12 @@
-# SorryPress
+<img width="600" src="pic01.png">
+
+*Inspired by [xtyxtyx/sorry](https://github.com/xtyxtyx/sorry) and [vuejs/vuepress](https://github.com/vuejs/vuepress)*
 
 - [x] VuePress
 - [x] Element-UI 1.x
 - [x] Koa 2.x
 - [x] FFmpeg
 - [ ] Docker
-
-*Inspired by [xtyxtyx/sorry](https://github.com/xtyxtyx/sorry) and [vuejs/vuepress](https://github.com/vuejs/vuepress)*
 
 ### Setup and develop (MacOS)
 
