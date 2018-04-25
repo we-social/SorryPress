@@ -16,11 +16,13 @@ brew install ffmpeg --with-libass
 
 # SorryPress/server >
 npm install
-npm run dev
 
 # SorryPress/site >
 npm install
+
+# SorryPress >
 npm run dev
+# 访问 http://localhost:8080/
 ```
 
 ### Deloy
@@ -30,6 +32,12 @@ npm i -g pm2 npm-run-all
 
 # SorryPress >
 npm start
+# 访问 http://localhost:7890/
+
+# 也可以指定一些url配置
+PORT=9999 npm start
+SITE_ROOT=/sorry/ npm start
+SERVER_ROOT=http://abc.com/ npm start
 ```
 
 ### Notes

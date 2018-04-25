@@ -16,6 +16,7 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
+    "@koa/cors": "^2.2.1",
     "nodemon": "^1.17.3"
   }
 }

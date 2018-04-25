@@ -28,6 +28,12 @@ app.use(async (ctx, next) => {
   }
 })
 
+// 便于本地调试 非production 直接开启cors供site调用
+if (process.env.NODE_ENV !== 'production') {
+  const cors = require('@koa/cors')
+  app.use(cors())
+}
+
 // appRouter.use('/', serve(siteDir)) // not works
 app.use(serve(siteDir))
 appRouter.use('/output', serve(outputDir))
