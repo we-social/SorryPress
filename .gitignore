@@ -3,3 +3,4 @@ package-lock.json
 
 /site/dist
 /server/output
+/*.log

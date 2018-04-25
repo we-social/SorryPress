@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "site:build": "cd site && npm run build",
+    "server:run": "pm2 start process.yml",
+    "start": "run-p site:build server:run"
+  }
+}

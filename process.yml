@@ -1,0 +1,18 @@
+# Config file for pm2
+
+apps:
+
+  - name:   SorryPress-server-run
+    script: ./server/src/index.js
+  
+    instances: 1
+    exec_mode: fork
+    max_memory_restart: 2G
+
+    error_file: ./server-err.log
+    out_file:   ./server-out.log
+
+    watch: false
+
+    env_production:
+      NODE_ENV: production

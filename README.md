@@ -6,23 +6,30 @@
 - [x] Element-UI 1.x
 - [x] Koa 2.x
 - [x] FFmpeg
+- [x] PM2
 - [ ] Docker
 
 ### Setup and develop (MacOS)
 
 ``` sh
-# setup and develop
 brew install ffmpeg --with-libass
 
-# server
-cd server
+# SorryPress/server >
 npm install
 npm run dev
 
-# site
-cd site
+# SorryPress/site >
 npm install
 npm run dev
+```
+
+### Deloy
+
+``` sh
+npm i -g pm2 npm-run-all
+
+# SorryPress >
+npm start
 ```
 
 ### Notes
