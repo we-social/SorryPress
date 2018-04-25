@@ -1,5 +1,11 @@
 {
   "scripts": {
+    "site:install": "cd site && npm i",
+    "server:install": "cd server && npm i",
+    "install": "run-p site:install server:install",
+    "site:dev": "cd site && npm run dev",
+    "server:dev": "cd server && npm run dev",
+    "dev": "run-p site:dev server:dev",
     "site:build": "cd site && npm run build",
     "server:run": "pm2 start process.yml",
     "start": "run-p site:build server:run"

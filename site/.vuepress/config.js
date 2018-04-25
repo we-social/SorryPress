@@ -2,6 +2,7 @@ const { join } = require('path')
 
 module.exports = {
   dest: join(__dirname, '../dist'),
+  base: process.env.SITE_ROOT || '/',
   locales: {
     '/': {
       lang: 'zh-CN',
