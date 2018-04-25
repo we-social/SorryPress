@@ -11,9 +11,22 @@ const execa = require('execa')
 const { md5, KoaAPI, KoaJSON } = require('./utils')
 const { siteDir, storyDir, outputDir, storyList } = require('../config')
 
+const port = process.env.PORT || 7890
 const app = new Koa()
 const appRouter = new Router()
 const apiRouter = new Router({ prefix: '/api' })
+
+app.on('error', err => {
+  console.error('app on error', err)
+})
+
+app.use(async (ctx, next) => {
+  await next()
+  const ctxError = ctx.state.error
+  if (ctxError) {
+    console.error('ctx state error', ctxError)
+  }
+})
 
 // appRouter.use('/', serve(siteDir)) // not works
 app.use(serve(siteDir))
@@ -44,4 +57,7 @@ apiRouter.post('/make', async ctx => {
 
 app.use(mount('/output', serve(outputDir)))
 app.use(apiRouter.routes())
-app.listen(process.env.PORT || 7890)
+
+app.listen(port, () => {
+  console.log('Listening at port', port)
+})

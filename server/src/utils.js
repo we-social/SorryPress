@@ -22,6 +22,7 @@ function KoaAPI () {
         error: 'Internal server error.'
       }
       ctx.body = errObj
+      ctx.state.error = err
     }
   }
 }
