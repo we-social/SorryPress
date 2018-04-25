@@ -1,8 +1,26 @@
 const { join } = require('path')
+const webpack = require('webpack')
+
+const env = Object.assign({}, process.env)
+
+// vueress中 base默认为`/`
+env.SITE_ROOT = env.SITE_ROOT || '/'
+
+// vuepress中 为避免用户容易漏掉末尾的`/` 如`/sorry` 导致非预期
+// 这里我们强制帮其补上 => `/sorry/` 另一种场景的实际需求也非常少
+env.SITE_ROOT = env.SITE_ROOT.replace(/\/*$/, '/')
+
+// 可指定server路径 默认同site路径
+env.SERVER_ROOT = env.SERVER_ROOT || env.SITE_ROOT
+
+const defineEnv = Object.keys(env).reduce((acc, k) => {
+  acc[`process.env.${k}`] = JSON.stringify(env[k])
+  return acc
+}, {})
 
 module.exports = {
   dest: join(__dirname, '../dist'),
-  base: process.env.SITE_ROOT || '/',
+  base: env.SITE_ROOT,
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -23,6 +41,9 @@ module.exports = {
   ],
   serviceWorker: true,
   configureWebpack: {
+    plugins: [
+      new webpack.DefinePlugin(defineEnv)
+    ],
     resolve: {
       alias: {
         '@story': join(__dirname, '../../server/story'),

@@ -16,7 +16,7 @@
 
 <script>
 import Meta from '@story/meta.json'
-import req from '@utils/req'
+import req, { serverBase } from '@utils/req'
 
 export default {
   props: {
@@ -43,7 +43,7 @@ export default {
         }
       })
       .then(res => {
-        const src = this.$withBase(`/output/${res.outputFileName}`)
+        const src = `${serverBase}/output/${res.outputFileName}`
         this.$refs.imgBox.querySelector('img')
           .setAttribute('src', src)
         this.$message.success('已生成')
