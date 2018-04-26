@@ -43,7 +43,9 @@ apiRouter.use(KoaAPI())
 apiRouter.use(KoaJSON())
 
 apiRouter.get('/random', async ctx => {
-  const { count } = ctx.query
+  let { count } = ctx.query
+  count = count || 0
+  count = Math.min(count, 3) // 隐私/安全问题 初步限最大
   const allList = await fs.readdirAsync(outputDir)
   const imgList = allList.filter(filename => {
     return extname(filename) === '.gif'
