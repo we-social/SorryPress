@@ -73,6 +73,8 @@ module.exports = {
               title: '制作动图',
               collapsable: false,
               children: [
+                'wuleihong',
+                'moshou',
                 'wangjingze',
                 'tuboshu'
               ]

@@ -1,4 +1,20 @@
 {
+  "wuleihong": {
+    "sentences": [
+      "我明天就离职",
+      "我要不离职",
+      "天打五雷轰",
+      "卧槽"
+    ]
+  },
+  "moshou": {
+    "sentences": [
+      "你是程序员",
+      "是的",
+      "Java还是C",
+      "PHP"
+    ]
+  },
   "wangjingze": {
     "sentences": [
       "我从今往后不踏入公司半步",
