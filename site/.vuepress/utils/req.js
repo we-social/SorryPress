@@ -36,7 +36,7 @@ export default async function req (opts) {
       try {
         return JSON.parse(res)
       } catch (err) {
-        throw new Error('Service is unavailable.')
+        throw new Error('Service unavailable.')
       }
     })
     .then(res => {

@@ -8,6 +8,8 @@
 - [x] FFmpeg
 - [x] PM2
 - [ ] Docker
+- [ ] Redis
+- [ ] Security
 
 ### Setup and develop (MacOS)
 

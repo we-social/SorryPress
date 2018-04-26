@@ -10,9 +10,10 @@
 .content p > a {
   display: inline-block;
   margin-right: .8em;
-  margin-bottom: .35em;
+  margin-bottom: .32em;
 }
 .content p > a > img {
-  display: block;
+  width: 200px; /* fixme */
+  height: 123px;
 }
 </style>

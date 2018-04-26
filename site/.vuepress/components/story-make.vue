@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div ref="imgBox">
+    <div class="img-box" ref="imgBox">
       <slot></slot>
     </div>
     <el-form class="form" :model="form">
-      <el-form-item v-for="(item, i) in form.inputs">
+      <el-form-item v-for="(item, i) in form.inputs" :key="i">
         <el-input :placeholder="meta.sentences[i]" v-model="form.inputs[i]"></el-input>
       </el-form-item>
       <el-form-item>
@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style scoped>
+.img-box img {
+  width: 200px; /* fixme */
+  height: 123px;
+}
 .form {
   margin-top: 20px;
   max-width: 320px;

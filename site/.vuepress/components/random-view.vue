@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card" v-for="item in list">
+    <div class="card" v-for="item in list" :key="item.hash">
       <el-card class="card" :body-style="{ padding: '0px' }">
         <img :src="item.src">
         <div style="padding: 8px; text-align: center">
@@ -41,11 +41,12 @@ export default {
           const src = `${serverBase}/output/${filename}` // fixme
           const hash = filename.split(/\-|\./)[1]
           const displayName = hash.slice(0, 3) + '...' + hash.slice(-4, -1)
-          return { src, displayName }
+          return { src, hash, displayName }
         })
         return this.$nextTick()
       })
       .then(() => {
+        window.scrollTo(0, 0)
         this.$message.success('已拉取')
         this.pulling = false
       })
@@ -64,6 +65,10 @@ export default {
   width: 200px;
   margin-top: .4em;
   margin-right: 1em;
+}
+.card img {
+  width: 200px; /* fixme */
+  height: 123px;
 }
 .bottom {
   margin-top: 1.2em;
