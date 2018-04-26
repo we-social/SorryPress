@@ -8,7 +8,7 @@
         <el-input :placeholder="meta.sentences[i]" v-model="form.inputs[i]"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button size="large" type="primary" @click="make">生成</el-button>
+        <el-button size="large" type="primary" :loading="making" @click="make">生成</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -18,6 +18,7 @@
 import Meta from '@story/meta.json'
 import req, { serverBase } from '@utils/req'
 
+// fixme: element components import
 export default {
   props: {
     name: String
@@ -25,6 +26,7 @@ export default {
   data () {
     const meta = Meta[this.name]
     return {
+      making: false,
       meta,
       form: {
         inputs: meta.sentences.map(() => '')
@@ -34,6 +36,8 @@ export default {
   methods: {
     make () {
       // todo 表单验证
+      if (this.making) return
+      this.making = true
       req({
         method: 'POST',
         url: '/api/make',
@@ -44,12 +48,13 @@ export default {
       })
       .then(res => {
         const src = `${serverBase}/output/${res.outputFileName}`
-        this.$refs.imgBox.querySelector('img')
-          .setAttribute('src', src)
+        this.$refs.imgBox.querySelector('img').src = src
         this.$message.success('已生成')
+        this.making = false
       })
       .catch(err => {
         this.$message.error(err.message)
+        this.making = false
       })
     }
   }

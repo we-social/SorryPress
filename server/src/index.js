@@ -1,6 +1,6 @@
 require('./setup')
 const { format } = require('util')
-const { join } = require('path')
+const { join, extname } = require('path')
 const fs = require('fs-extra-promise')
 const Koa = require('koa')
 const mount = require('koa-mount')
@@ -8,6 +8,7 @@ const serve = require('koa-static')
 const Router = require('koa-router')
 const httpError = require('http-errors')
 const execa = require('execa')
+const _ = require('lodash')
 const { md5, KoaAPI, KoaJSON } = require('./utils')
 const { siteDir, storyDir, outputDir, storyList } = require('../config')
 
@@ -40,6 +41,16 @@ appRouter.use('/output', serve(outputDir))
 
 apiRouter.use(KoaAPI())
 apiRouter.use(KoaJSON())
+
+apiRouter.get('/random', async ctx => {
+  const { count } = ctx.query
+  const allList = await fs.readdirAsync(outputDir)
+  const imgList = allList.filter(filename => {
+    return extname(filename) === '.gif'
+  })
+  const randomList = _.sampleSize(imgList, count)
+  ctx.body = { randomList }
+})
 
 apiRouter.post('/make', async ctx => {
   const { story, textList } = ctx.request.body

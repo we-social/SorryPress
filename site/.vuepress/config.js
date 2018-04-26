@@ -65,6 +65,10 @@ module.exports = {
           {
             text: '制作动图',
             link: '/make/'
+          },
+          {
+            text: '随机广场',
+            link: '/random/'
           }
         ],
         sidebar: {
