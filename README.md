@@ -16,18 +16,13 @@
 ``` sh
 brew install ffmpeg --with-libass
 
-# SorryPress/server >
-npm install
-
-# SorryPress/site >
-npm install
-
 # SorryPress >
+npm install
 npm run dev
 # 访问 http://localhost:8080/
 ```
 
-### Deloy
+### Deploy
 
 ``` sh
 npm i -g pm2 npm-run-all

@@ -47,6 +47,7 @@ export default {
         }
       })
       .then(res => {
+        window.scrollTo(0, 0)
         const src = `${serverBase}/output/${res.outputFileName}`
         this.$refs.imgBox.querySelector('img').src = src
         this.$message.success('已生成')

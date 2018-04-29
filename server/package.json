@@ -4,19 +4,20 @@
     "dev": "nodemon .",
     "start": "node ."
   },
+  "devDependencies": {
+    "@koa/cors": "^2.2.1",
+    "nodemon": "^1.17.3"
+  },
   "dependencies": {
     "execa": "^0.10.0",
     "fs-extra-promise": "^1.0.1",
     "http-errors": "^1.6.3",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
+    "koa-helmet": "^4.0.0",
     "koa-mount": "^3.0.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "lodash": "^4.17.5"
-  },
-  "devDependencies": {
-    "@koa/cors": "^2.2.1",
-    "nodemon": "^1.17.3"
   }
 }

@@ -21,6 +21,7 @@ const defineEnv = Object.keys(env).reduce((acc, k) => {
 module.exports = {
   dest: join(__dirname, '../dist'),
   base: env.SITE_ROOT,
+  // ga: 'XX-XXXXXXXXX-X',
   locales: {
     '/': {
       lang: 'zh-CN',

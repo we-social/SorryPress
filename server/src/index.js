@@ -5,6 +5,7 @@ const fs = require('fs-extra-promise')
 const Koa = require('koa')
 const mount = require('koa-mount')
 const serve = require('koa-static')
+const helmet = require('koa-helmet')
 const Router = require('koa-router')
 const httpError = require('http-errors')
 const execa = require('execa')
@@ -20,6 +21,8 @@ const apiRouter = new Router({ prefix: '/api' })
 app.on('error', err => {
   console.error('app on error', err)
 })
+
+app.use(helmet())
 
 app.use(async (ctx, next) => {
   await next()
