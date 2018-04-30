@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "imagemin": "cd server/story && imagemin server/story/*.* -o out",
     "site:install": "cd site && npm i",
     "server:install": "cd server && npm i",
     "preinstall": "run-p site:install server:install",
