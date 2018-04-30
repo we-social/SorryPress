@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Meta from '@story/meta.json'
+import Meta from '@story/meta.yml'
 import req, { serverBase } from '@utils/req'
 
 // fixme: element components import
@@ -24,7 +24,7 @@ export default {
     name: String
   },
   data () {
-    const meta = Meta[this.name]
+    const meta = Meta.map[this.name]
     return {
       making: false,
       meta,

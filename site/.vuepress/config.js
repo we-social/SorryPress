@@ -45,6 +45,17 @@ module.exports = {
     plugins: [
       new webpack.DefinePlugin(defineEnv)
     ],
+    module: {
+      rules: [
+        {
+          test: /\.ya?ml$/,
+          use: [
+            'json-loader',
+            'yaml-loader'
+          ]
+        }
+      ]
+    },
     resolve: {
       alias: {
         '@story': join(__dirname, '../../server/story'),

@@ -12,6 +12,7 @@
     "execa": "^0.10.0",
     "fs-extra-promise": "^1.0.1",
     "http-errors": "^1.6.3",
+    "js-yaml": "^3.11.0",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
     "koa-helmet": "^4.0.0",

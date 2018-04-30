@@ -1,8 +1,11 @@
 const { join } = require('path')
+const fs = require('fs')
+const yaml = require('js-yaml')
 
 const storyDir = join(__dirname, 'story')
-const Meta = require(join(storyDir, 'meta.json'))
-const storyList = Object.keys(Meta)
+const metaFile = join(storyDir, 'meta.yml')
+const Meta = yaml.safeLoad(fs.readFileSync(metaFile, 'utf8'))
+const storyList = Object.keys(Meta.map)
 
 exports.storyDir = storyDir
 exports.storyList = storyList
