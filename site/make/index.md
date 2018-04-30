@@ -4,7 +4,7 @@
 请点击选择一个模板
 :::
 
-[![](~@story/nvjizhe.gif)](./nvjizhe.md)[![](~@story/wunian.gif)](./wunian.md)[![](~@story/wuleihong.gif)](./wuleihong.md)[![](~@story/moshou.gif)](./moshou.md)[![](~@story/wangjingze.gif)](./wangjingze.md)[![](~@story/tuboshu.gif)](./tuboshu.md)
+[![](~@story/nvjizhe.png)](./nvjizhe.md)[![](~@story/wunian.png)](./wunian.md)[![](~@story/wuleihong.png)](./wuleihong.md)[![](~@story/moshou.png)](./moshou.md)[![](~@story/wangjingze.png)](./wangjingze.md)[![](~@story/tuboshu.png)](./tuboshu.md)
 
 <style scoped>
 .content p > a {
