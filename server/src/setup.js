@@ -1,4 +1,4 @@
-const fs = require('fs-extra-promise')
+const fs = require('fs-extra')
 const { storyDir, outputDir } = require('../config')
 
 fs.ensureDirSync(storyDir)

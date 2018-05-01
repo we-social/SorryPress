@@ -1,7 +1,7 @@
 require('./setup')
 const { format } = require('util')
 const { join, extname } = require('path')
-const fs = require('fs-extra-promise')
+const fs = require('fs-extra')
 const Koa = require('koa')
 const mount = require('koa-mount')
 const serve = require('koa-static')
@@ -49,7 +49,7 @@ apiRouter.get('/random', async ctx => {
   let { count } = ctx.query
   count = count || 0
   count = Math.min(count, 3) // 隐私/安全问题 初步限最大
-  const allList = await fs.readdirAsync(outputDir)
+  const allList = await fs.readdir(outputDir)
   const imgList = allList.filter(filename => {
     return extname(filename) === '.gif'
   })
@@ -65,13 +65,13 @@ apiRouter.post('/make', async ctx => {
   }
   const inputFile = join(storyDir, `${story}.gif`)
   const rawAssFile = join(storyDir, `${story}.ass`)
-  const rawAssContent = await fs.readFileAsync(rawAssFile, 'utf8')
+  const rawAssContent = await fs.readFile(rawAssFile, 'utf8')
   const assContent = format(rawAssContent, ...textList)
   const outputMd5 = md5(assContent, 'hex')
   const outputFileName = `${story}-${outputMd5}.gif`
   const outputFile = join(outputDir, outputFileName)
   const assFile = join(outputDir, `${story}-${outputMd5}.ass`)
-  await fs.writeFileAsync(assFile, assContent)
+  await fs.writeFile(assFile, assContent)
   const args = ['-i', inputFile, '-vf', `ass=${assFile}`, '-y', outputFile]
   await execa('ffmpeg', args, { stdio: 'inherit' })
   ctx.body = { outputFileName }
