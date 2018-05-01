@@ -89,6 +89,7 @@ module.exports = {
               title: '制作动图',
               collapsable: false,
               children: [
+                'youmeinv',
                 'nvjizhe',
                 'wunian',
                 'wuleihong',
