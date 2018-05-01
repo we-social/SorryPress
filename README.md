@@ -17,7 +17,7 @@
 brew install ffmpeg --with-libass
 
 # SorryPress >
-npm install
+npm run all:install
 npm run dev
 # 访问 http://localhost:8080/
 ```
