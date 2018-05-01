@@ -9,6 +9,6 @@
     "dev": "run-p site:dev server:dev",
     "site:build": "cd site && npm run build",
     "server:run": "pm2 start process.yml",
-    "start": "run-p site:build server:run"
+    "start": "run-s site:build server:run"
   }
 }

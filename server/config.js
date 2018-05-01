@@ -10,4 +10,5 @@ const storyList = Object.keys(Meta.map)
 exports.storyDir = storyDir
 exports.storyList = storyList
 exports.outputDir = join(__dirname, 'output')
-exports.siteDir = join(__dirname, '../site/dist')
+exports.sitePreDir = join(__dirname, '../site/dist')
+exports.siteDir = join(__dirname, '../site/dist-release')
