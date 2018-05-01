@@ -3,5 +3,8 @@ package-lock.json
 
 /site/dist
 /site/dist-release
+/site/make/*.md
+!/site/*.md.tmpl
+
 /server/output
 /*.log

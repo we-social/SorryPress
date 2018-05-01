@@ -1,9 +1,11 @@
 {
   "scripts": {
-    "dev": "vuepress dev",
-    "build": "vuepress build"
+    "pre": "node make-gen",
+    "dev": "run-s pre && vuepress dev",
+    "build": "run-s pre && vuepress build"
   },
   "devDependencies": {
+    "fs-extra": "^6.0.0",
     "json-loader": "^0.5.7",
     "vuepress": "^0.7.1",
     "yaml-loader": "^0.5.0"

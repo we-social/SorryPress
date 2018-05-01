@@ -1,11 +1,13 @@
 map:
   youmeinv:
+    title: 有美女
     sentences:
       - 有美女！
       - 好看吗
       - 哟
       - 他调戏我
   nvjizhe:
+    title: 女记者
     sentences:
       - 我们做的这个QQ啊
       - 用户量大
@@ -14,30 +16,35 @@ map:
       - 性能特别稳定
       - 界面特别好看
   wunian:
+    title: 五年
     sentences:
       - BUG
       - BUG
       - 吃鸡到处都是BUG！！
       - 你知道吗！
   wuleihong:
+    title: 五雷轰
     sentences:
       - 我明天就离职
       - 我要不离职
       - 天打五雷轰
       - 卧槽
   moshou:
+    title: 魔兽
     sentences:
       - 你是程序员
       - 是的
       - Java还是C
       - PHP
   wangjingze:
+    title: 王境泽
     sentences:
       - 我从今往后不踏进公司半步
       - 辣鸡
       - 我去创业
       - 今晚去健身 @桐人
   tuboshu:
+    title: 土拨鼠
     sentences:
       - 啊？
       - 周三不加班！！！！
