@@ -39,6 +39,7 @@ SERVER_ROOT=http://abc.com/ npm start
 
 ### Notes
 
+- ffmpeg注意，如果直接覆盖原文件，会导致time缩短，文件破坏，应借助tmp
 - VuePress支持async/await进行中 [vuejs/vuepress#124](https://github.com/vuejs/vuepress/issues/124)
 - 只使用了Element-UI 1.x，因为2.x在VuePress中报错，还没解决 [vuejs/vuepress#80](https://github.com/vuejs/vuepress/pull/80)
 
@@ -48,6 +49,15 @@ SERVER_ROOT=http://abc.com/ npm start
   position: absolute;
   transform: rotateX(-21deg) rotateY(-20deg) rotateZ(-17deg);
 }
+```
+
+``` sh
+# 紧急将gif模板及ugc改为低于1M 利于在微信传播 注意借tmp
+function ffmpeg_rate() {
+  ffmpeg -i "$1.gif" -r $2 "$1.tmp.gif";
+  mv "$1.tmp.gif" "$1.gif"
+}
+ffmpeg_rate wunian 10
 ```
 
 ``` sh
