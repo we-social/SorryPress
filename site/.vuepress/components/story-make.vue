@@ -5,7 +5,7 @@
     </div>
     <el-form class="form" :model="form">
       <el-form-item v-for="(item, i) in form.inputs" :key="i">
-        <el-input :placeholder="meta.sentences[i]" v-model="form.inputs[i]"></el-input>
+        <el-input :placeholder="placeholders[i]" v-model="form.inputs[i]"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button size="large" type="primary" :loading="making" @click="make">生成</el-button>
@@ -27,7 +27,11 @@ export default {
     const meta = Meta.map[this.name]
     return {
       making: false,
-      meta,
+      placeholders: meta.sentences.map(str => {
+        const chunks = str.split(Meta.delimiter) // 将默认字幕提取出来
+        chunks.splice(0, 2)
+        return chunks.join(Meta.delimiter)
+      }),
       form: {
         inputs: meta.sentences.map(() => '')
       }

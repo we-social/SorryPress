@@ -1,5 +1,4 @@
 require('./setup')
-const { format } = require('util')
 const { join, extname } = require('path')
 const fs = require('fs-extra')
 const Koa = require('koa')
@@ -63,15 +62,30 @@ apiRouter.post('/make', async ctx => {
   if (!valid) {
     throw httpError(400, 'No such story.')
   }
-  const inputFile = join(storyDir, `${story}.gif`)
-  const rawAssFile = join(storyDir, `${story}.ass`)
+  const rawAssFile = join(storyDir, 'story.ass.tmpl')
   const rawAssContent = await fs.readFile(rawAssFile, 'utf8')
-  const assContent = format(rawAssContent, ...textList)
+  const assContentFn = _.template(rawAssContent)
+
+  const metaFile = join(storyDir, 'meta.js')
+  const Meta = require(metaFile)
+  const sentences = Meta.map[story].sentences
+    .map((str, i) => {
+      const chunks = str.split(Meta.delimiter) // 将默认字幕替换为用户输入
+      chunks.length = 3
+      chunks[2] = textList[i]
+      return chunks.join(Meta.delimiter)
+    })
+  const assContent = assContentFn({ sentences })
+    .replace(/\n+$/, '\n')
+    .replace(/^\n(Dialogue:)/gm, '$1')
+
   const outputMd5 = md5(assContent, 'hex')
   const outputFileName = `${story}-${outputMd5}.gif`
   const outputFile = join(outputDir, outputFileName)
   const assFile = join(outputDir, `${story}-${outputMd5}.ass`)
   await fs.writeFile(assFile, assContent)
+
+  const inputFile = join(storyDir, `${story}.gif`)
   const args = ['-i', inputFile, '-vf', `ass=${assFile}`, '-y', outputFile]
   await execa('ffmpeg', args, { stdio: 'inherit' })
   ctx.body = { outputFileName }
