@@ -8,10 +8,10 @@ const storyMap = Meta.map
   const makeDir = join(__dirname, 'make')
   const rawStoryFile = join(makeDir, 'story.md.tmpl')
   const rawStoryContent = await fs.readFile(rawStoryFile, 'utf8')
+  const storyContentFn = _.template(rawStoryContent)
 
   const storyTasks = Object.keys(storyMap).map(async key => {
-    const compiled = _.template(rawStoryContent)
-    const storyContent = compiled({
+    const storyContent = storyContentFn({
       ...storyMap[key],
       key
     })
@@ -22,8 +22,8 @@ const storyMap = Meta.map
   const indexTask = (async () => {
     const rawIndexFile = join(makeDir, 'index.md.tmpl')
     const rawIndexContent = await fs.readFile(rawIndexFile, 'utf8')
-    const compiled = _.template(rawIndexContent)
-    const indexContent = compiled({ storyMap })
+    const indexContentFn = _.template(rawIndexContent)
+    const indexContent = indexContentFn({ storyMap })
     const indexFile = join(makeDir, 'index.md')
     await fs.writeFile(indexFile, indexContent)
   })()

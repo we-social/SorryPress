@@ -58,7 +58,7 @@ export default {
             resolve()
           }
           img.onerror = () => {
-            reject(new Error('图片2加载失败'))
+            reject(new Error('图片加载失败'))
           }
           img.src = src
         })
@@ -81,6 +81,7 @@ export default {
 .img-box img {
   width: 200px; /* fixme */
   height: 123px;
+  background-color: #ececec;
 }
 .form {
   margin-top: 20px;

@@ -72,7 +72,7 @@ apiRouter.post('/make', async ctx => {
     .map((str, i) => {
       const chunks = str.split(Meta.delimiter) // 将默认字幕替换为用户输入
       chunks.length = 3
-      chunks[2] = textList[i]
+      chunks[2] = textList[i].replace(/\s/g, ' ') // 避免用户注入换行等影响ass结构
       return chunks.join(Meta.delimiter)
     })
   const assContent = assContentFn({ sentences })

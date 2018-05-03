@@ -69,6 +69,7 @@ export default {
 .card img {
   width: 200px; /* fixme */
   height: 123px;
+  background-color: #ececec;
 }
 .bottom {
   margin-top: 1.2em;
