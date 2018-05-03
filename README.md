@@ -7,7 +7,7 @@
 - [x] Koa 2.x
 - [x] FFmpeg
 - [x] PM2
-- [ ] Docker
+- [x] Docker
 - [ ] Redis
 - [ ] Security
 
@@ -35,6 +35,13 @@ npm start
 PORT=9999 npm start
 SITE_ROOT=/sorry/ npm start
 SERVER_ROOT=http://abc.com/ npm start
+```
+
+### Docker
+
+``` sh
+docker build -t sorrypress .
+docker run -p 7890:7890 -d sorrypress
 ```
 
 ### Notes

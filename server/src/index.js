@@ -12,7 +12,7 @@ const _ = require('lodash')
 const { md5, KoaAPI, KoaJSON } = require('./utils')
 const { siteDir, storyDir, outputDir, storyList } = require('../config')
 
-const port = process.env.PORT || 7890
+const port = process.env.SERVER_PORT || process.env.PORT || 7890
 const app = new Koa()
 const appRouter = new Router()
 const apiRouter = new Router({ prefix: '/api' })
