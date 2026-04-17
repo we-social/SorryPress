@@ -7,6 +7,7 @@
   "devDependencies": {
     "fs-extra": "^6.0.0",
     "json-loader": "^0.5.7",
+    "lodash": "^4.17.10",
     "vuepress": "^0.7.1",
     "yaml-loader": "^0.5.0"
   },
